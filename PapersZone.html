@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="C:\Users\DELL\Desktop\PapersZone\PaperLogo.ico" type="image/x-icon"> <!-- Adjust the path accordingly -->
+    <title>Papers Zone</title>
+    <link rel="stylesheet" href="C:\Users\DELL\Desktop\PapersZone\PapersZone.css">
+</head>
+<body style="background-color:#d5cece;">
+
+
+    <header class="header">
+        <button type="button" id="theme-toggle" class="theme-toggle">
+            🌙
+        </button>
+
+        <!-- Logo Container -->
+<div class="logo-container">
+    <img src="C:\Users\DELL\Desktop\PapersZone\PaperLogo.png" alt="Papers Zone Logo" class="logo">
+    <p class="slogan">All In One Past Papers Library</p>
+</div>
+
+        <div class="search-container">
+            <div id="search-container" class="search-container">
+                <input type="text" placeholder="Search for past papers" class="search-bar">
+            </div>
+        <nav>
+            <ul class="navbar">
+                <li><a href="#" onclick="toggleDropdown(event, 'home')">Home</a></li>
+                <li>
+                    <a href="#" onclick="toggleDropdown(event, 'grades')">Grades</a>
+                    <ul class="dropdown" id="grades">
+                        <li><a href="#">Grade 1</a></li>
+                        <li><a href="#">Grade 2</a></li>
+                        <li><a href="#">Grade 3</a></li>
+                        <li><a href="#">Grade 4</a></li>
+                        <li><a href="#">Grade 5</a></li>
+                        <li><a href="#">Grade 6</a></li>
+                        <li><a href="#">Grade 7</a></li>
+                        <li><a href="#">Grade 8</a></li>
+                        <li><a href="#">Grade 9</a></li>
+                        <li><a href="#">Grade 10</a></li>
+                        <li><a href="#">Grade 11</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleDropdown(event, 'medium')">Medium</a>
+                    <ul class="dropdown" id="medium">
+                        <li><a href="#">English</a></li>
+                        <li><a href="#">Sinhala</a></li>
+                        <li><a href="#">Tamil</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleDropdown(event, 'provincial')">Provincial Papers</a>
+                    <ul class="dropdown" id="provincial">
+                        <li><a href="#">Western</a></li>
+                        <li><a href="#">Central</a></li>
+                        <li><a href="#">Southern</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script>
+        let scrollElements_scroll= document.querySelectorAll(".scroll-reveal");
+    
+        window.addEventListener("scroll", () => {
+            scrollElements_scroll.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight - 100) {
+                    el.classList.add("show");
+                }
+            });
+        });
+        
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    document.querySelectorAll("header, footer, .navbar a, .search-button, section").forEach((element) => {
+        element.classList.toggle("dark-mode");
+    });
+});
+
+// Smooth scroll animation for elements
+const scrollElements = document.querySelectorAll(".scroll-reveal");
+window.addEventListener("scroll", () => {
+    scrollElements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= window.innerHeight - 100) {
+            el.classList.add("show");
+        }
+    });
+});
+
+// Toggle dropdown menus
+function toggleDropdown(event, dropdownId) {
+    event.preventDefault();
+    const dropdown = document.getElementById(dropdownId);
+    dropdown.classList.toggle("show");
+}
+
+// Close dropdown if clicking outside
+window.onclick = function(event) {
+    if (!event.target.matches('.navbar a')) {
+        document.querySelectorAll('.dropdown').forEach(dropdown => dropdown.classList.remove('show'));
+    }
+};
+
+// Smooth scroll to top
+const backToTopButton = document.createElement("button");
+backToTopButton.id = "backToTop";
+backToTopButton.textContent = "⬆️";
+backToTopButton.style.position = "fixed";
+backToTopButton.style.bottom = "20px";
+backToTopButton.style.right = "20px";
+backToTopButton.style.display = "none";
+backToTopButton.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+document.body.appendChild(backToTopButton);
+
+window.onscroll = () => {
+    backToTopButton.style.display = window.scrollY > 300 ? "block" : "none";
+};
+// Search bar scroll effect
+const searchContainer = document.getElementById("search-container");
+let lastScrollY = window.scrollY;
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        // User is scrolling down
+        searchContainer.classList.add("sticky-search-bar");
+    } else if (window.scrollY < lastScrollY || window.scrollY <= 100) {
+        // User is scrolling up or near top
+        searchContainer.classList.remove("sticky-search-bar");
+    }
+    lastScrollY = window.scrollY;
+});
+
+// Add fade-out effect before page unload
+document.querySelectorAll('.button a').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const targetUrl = event.currentTarget.href;
+
+        // Add fade-out effect
+        document.body.classList.add('fade-out');
+
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 500); // Adjust the timing to match the CSS transition duration
+    });
+});
+
+// Add fade-in effect on page load
+window.onload = () => {
+    document.body.classList.add('fade-in');
+};
+
+
+    </script>
+
+<script>
+    // Scroll animation for category items
+    let scrollElements_new = document.querySelectorAll('.scroll-animate');
+
+    const elementInView = (el, offset = 100) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+            elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset
+        );
+    };
+
+    const displayScrollElement = (element) => {
+        element.classList.add('show');
+    };
+
+    const handleScrollAnimation = () => {
+        scrollElements_new.forEach((el) => {
+            if (elementInView(el, 100)) {
+                displayScrollElement(el);
+            }
+        });
+    };
+
+    window.addEventListener('scroll', handleScrollAnimation);
+</script>
+
+    
+    <main>
+        
+        
+        <section class="hero">
+            <h2>Welcome to Papers Zone</h2>
+            <p>Your go-to resource for all past papers and textbooks from Grade 1 to A/L examinations.</p>
+        </section>
+
+        <section class="grades">
+            <h2>Grades</h2>
+
+            <div class="additional-section">
+                <div class="container">
+                    <div class="button">
+                        <a href="grade1.html">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\1.gif" alt="Grades Section GIF">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="grade1.html">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\2.gif" alt="Grades Section GIF">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <a href="grade1.html">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\4.gif" alt="Grades Section GIF">
+                    </a>
+                    </div>
+                    <div class="button">
+                        <a href="grade1.html">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\5.gif" alt="Grades Section GIF">
+                    </a>
+                    </div>
+                    <div class="button">
+                        <a href="grade1.html">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\6.gif" alt="Grades Section GIF">
+                    </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="additional-section">
+                <div class="container">
+                    <div class="button">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\7.gif" alt="Grades Section GIF">
+                    </div>
+                    <div class="button">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\8.gif" alt="Grades Section GIF">
+                    </div>
+                    <div class="button">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\9.gif" alt="Grades Section GIF">
+                    </div>
+                    <div class="button">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\10.gif" alt="Grades Section GIF">
+                    </div>
+                    <div class="button">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\11.gif" alt="Grades Section GIF">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="additional-section">
+                <div class="container">
+                    <div class="button">
+                        <img src="C:\Users\DELL\Desktop\PapersZone\GIF\12.gif" alt="GIF 5">
+                    </div>
+                </div>
+            </div>
+                <h2>O/L and A/L Examination</h2>
+                <div class="additional-section">
+                    <div class="container">
+                        <div class="button">
+                            <img src="C:\Users\DELL\Desktop\PapersZone\GIF\13.gif" alt="GIF 5">
+                        </div>
+                        <div class="button">
+                            <img src="C:\Users\DELL\Desktop\PapersZone\GIF\14.gif" alt="GIF 6">
+                        </div>
+                    </div>
+                </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Papers Zone. All rights reserved.</p>
+        <p>&copy; Bhathiya Kaveesh</p>
+    </footer>
+
+    <script>
+        function toggleDropdown(event, dropdownId) {
+            event.preventDefault(); // Prevent the default link action
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                if (dropdown.id === dropdownId) {
+                    dropdown.classList.toggle('show');
+                } else {
+                    dropdown.classList.remove('show');
+                }
+            });
+        }
+
+        // Close dropdown if clicking outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.navbar a')) {
+                const dropdowns = document.querySelectorAll('.dropdown');
+                dropdowns.forEach(dropdown => dropdown.classList.remove('show'));
+            }
+        };
+    </script>
+    <script src="C:\Users\DELL\Desktop\PapersZone\PapersZone.js"></script>
+
+</body>
+</html>

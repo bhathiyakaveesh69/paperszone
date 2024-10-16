@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 1 - Papers Zone</title>
+    <link rel="stylesheet" href="PapersZone.css">
+    <style>
+        /* Additional Styles for Grade 1 Page */
+        body.grade-page {
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            transition: background 0.5s ease;
+        }
+       /* Grid background */
+.grid-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px; /* Size of the grid cells */
+    z-index: 0; /* Place it behind other content */
+}
+
+        header {
+            background: rgba(1, 8, 15, 0.9);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header .header-content h1 {
+            margin: 0;
+            font-size: 3em;
+            animation: slideDown 0.6s forwards;
+        }
+
+        header .header-content .tagline {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        main {
+            padding: 40px;
+            max-width: 1000px;
+            margin: auto;
+            animation: fadeIn 0.6s forwards;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .hero-section {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero-content {
+            margin-top: 20px;
+        }
+
+        .cta-button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #212121, #0d0d0d);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        .subjects-section {
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .subjects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Space between cards */
+        }
+
+        .subject-card {
+            width: 200px;
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #081483, #1358a7);
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            perspective: 1000px; /* 3D effect */
+            position: relative; /* Positioning for the shadow */
+        }
+
+        .subject-card:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            transform: translateZ(10px) rotateX(5deg); /* 3D hover effect */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .subject-icon {
+            width: 60px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(0, 123, 255, 0.9);
+            color: white;
+            position: relative;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body style="background-color:#c9cee9;" >
+    <div class="grade-page"></div>
+  <!-- Grid Background -->
+  <div class="grid-background"></div>
+
+    <!-- Header -->
+    <header>
+
+         <!-- Logo Container -->
+<div class="logo-container">
+    <img src="C:\Users\DELL\Desktop\PapersZone\PaperLogo.png" alt="Papers Zone Logo" class="logo">
+</div>
+        <div class="header-content">
+            <h1>Grade 1 Past Papers</h1>
+            <p class="tagline">Explore resources and past papers for Grade 1 in all subjects</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Welcome to Grade 1 Resources</h2>
+                <p>Dive into a wealth of knowledge tailored specifically for Grade 1 students. Here you’ll find past papers, worksheets, and learning materials designed to boost your learning experience.</p>
+                <button class="cta-button" onclick="explorePapers()">Return to<br><B>HOME</B></br></button>
+            </div>
+        </section>
+
+        <!-- Subject List -->
+        <section class="subjects-section">
+            <h2 class="section-title">Subjects Available</h2>
+            <div class="subjects-container">
+                <div class="subject-card" onclick="window.location.href='path/to/math.pdf';">
+                    <img src="C:\Users\DELL\Desktop\PapersZone\Icons\Maths.ico" alt="Mathematics Icon" class="subject-icon">
+                    <h3>Mathematics</h3>
+                </div>
+                <div class="subject-card" onclick="window.location.href='path/to/science.pdf';">
+                    <img src="C:\Users\DELL\Desktop\PapersZone\Icons\Science.ico" alt="Science Icon" class="subject-icon">
+                    <h3>Science</h3>
+                </div>
+                <div class="subject-card" onclick="window.location.href='path/to/english.pdf';">
+                    <img src="C:\Users\DELL\Desktop\PapersZone\Icons\English.ico" alt="English Icon" class="subject-icon">
+                    <h3>English</h3>
+                </div>
+                <div class="subject-card" onclick="window.location.href='path/to/tamil-language.pdf';">
+                    <img src="C:\Users\DELL\Desktop\PapersZone\Icons\Tamil.ico" alt="Tamil Language Icon" class="subject-icon">
+                    <h3>Tamil Language</h3>
+                </div>
+                <div class="subject-card" onclick="window.location.href='path/to/buddhism.pdf';">
+                    <img src="C:\Users\DELL\Desktop\PapersZone\Icons\Buddhism.ico" alt="Buddhism Icon" class="subject-icon">
+                    <h3>Buddhism</h3>
+                </div>
+                <div class="subject-card" onclick="window.location.href='path/to/environment.pdf';">
+                    <img src="C:\Users\DELL\Desktop\PapersZone\Icons\environment.ico" alt="Environment Icon" class="subject-icon">
+                    <h3>Environment</h3>
+                </div>
+                <div class="subject-card" onclick="window.location.href='path/to/sinhala.pdf';">
+                    <img src="C:\Users\DELL\Desktop\PapersZone\Icons\Sinhala.ico" alt="Sinhala Icon" class="subject-icon">
+                    <h3>Sinhala</h3>
+                </div>
+                <div class="subject-card" onclick="window.location.href='path/to/catholicism.pdf';">
+                    <img src="C:\Users\DELL\Desktop\PapersZone\Icons\Catholic.ico" alt="Catholicism Icon" class="subject-icon">
+                    <h3>Catholicism</h3>
+                </div>
+<br></br>
+</div>
+</div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Papers Zone. All rights reserved.</p>
+        <p>&copy; Bhathiya Kaveesh</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="PapersZone.js"></script>
+    <script>
+        // Function to explore papers - can be linked to main resources page if needed
+        function explorePapers() {
+            window.location.href = 'PapersZone.html'; // Change to the appropriate link
+        }
+
+        // Fade-in effect on page load
+        window.onload = () => {
+            document.querySelector('main').style.opacity = 1;
+        };
+    </script>
+</body>
+</html>
